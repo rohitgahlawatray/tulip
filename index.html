@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love 🌷</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(to top, #ffd6e7 0%, #ffeef5 35%, #bfe7ff 100%);
+      position: relative;
+    }
+
+    .sky {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.7) 0 40px, transparent 50px),
+        radial-gradient(circle at 75% 18%, rgba(255,255,255,0.6) 0 35px, transparent 45px),
+        radial-gradient(circle at 60% 10%, rgba(255,255,255,0.5) 0 25px, transparent 35px);
+      animation: floatClouds 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatClouds {
+      from { transform: translateX(-10px); }
+      to { transform: translateX(10px); }
+    }
+
+    .message {
+      position: absolute;
+      top: 9%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      padding: 22px 30px;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      color: #b03060;
+      z-index: 10;
+      width: min(90%, 700px);
+    }
+
+    .message h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    .message p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #7a294a;
+    }
+
+    .ground {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 28%;
+      background: linear-gradient(to top, #5fa85c, #83c97d);
+      border-top-left-radius: 40% 20%;
+      border-top-right-radius: 40% 20%;
+    }
+
+    .garden {
+      position: absolute;
+      bottom: 12%;
+      width: 100%;
+      height: 55%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-end;
+      padding: 0 10px;
+    }
+
+    .tulip {
+      position: relative;
+      width: 40px;
+      height: 180px;
+      animation: sway 3s ease-in-out infinite;
+      transform-origin: bottom center;
+    }
+
+    .tulip:nth-child(even) {
+      animation-duration: 4s;
+    }
+
+    .stem {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 6px;
+      height: 120px;
+      background: #2f8f46;
+      transform: translateX(-50%);
+      border-radius: 4px;
+    }
+
+    .leaf {
+      position: absolute;
+      bottom: 45px;
+      width: 34px;
+      height: 16px;
+      background: #3ea85b;
+      border-radius: 100% 0 100% 0;
+    }
+
+    .leaf.left {
+      left: -18px;
+      transform: rotate(-35deg);
+    }
+
+    .leaf.right {
+      right: -18px;
+      transform: scaleX(-1) rotate(-35deg);
+    }
+
+    .flower {
+      position: absolute;
+      bottom: 105px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 52px;
+      height: 56px;
+    }
+
+    .petal {
+      position: absolute;
+      bottom: 0;
+      width: 24px;
+      height: 34px;
+      border-radius: 50% 50% 8px 8px;
+    }
+
+    .petal.center {
+      left: 14px;
+      width: 24px;
+      height: 42px;
+      z-index: 3;
+      border-radius: 50% 50% 10px 10px;
+    }
+
+    .petal.left {
+      left: 3px;
+      transform: rotate(-20deg);
+      z-index: 2;
+    }
+
+    .petal.right {
+      right: 3px;
+      transform: rotate(20deg);
+      z-index: 2;
+    }
+
+    .red .petal { background: #ff4d6d; }
+    .pink .petal { background: #ff7eb6; }
+    .yellow .petal { background: #ffd84d; }
+    .purple .petal { background: #b980ff; }
+    .orange .petal { background: #ff9f43; }
+
+    @keyframes sway {
+      0%   { transform: rotate(-2deg); }
+      50%  { transform: rotate(2deg); }
+      100% { transform: rotate(-2deg); }
+    }
+
+    .hearts {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      color: rgba(255, 90, 140, 0.7);
+      font-size: 20px;
+      animation: rise linear infinite;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    .footer-note {
+      position: absolute;
+      bottom: 18px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 1rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      z-index: 10;
+    }
+
+    @media (max-width: 700px) {
+      .message h1 {
+        font-size: 1.8rem;
+      }
+
+      .message p {
+        font-size: 1rem;
+      }
+
+      .tulip {
+        transform: scale(0.82);
+      }
+
+      .garden {
+        gap: 0;
+        padding: 0 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sky"></div>
+
+  <div class="message">
+    <h1>For You 🌷</h1>
+    <p>
+      If I could, I would bring you to a garden full of tulips every day.<br>
+      Until then, I made you this little one — just to remind you how beautiful,
+      special you are. 💖
+    </p>
+  </div>
+
+  <div class="garden">
+    <div class="tulip red">
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+      <div class="flower">
+        <div class="petal left"></div>
+        <div class="petal center"></div>
+        <div class="petal right"></div>
+      </div>
+    </div>
+
+    <div class="tulip pink">
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+      <div class="flower">
+        <div class="petal left"></div>
+        <div class="petal center"></div>
+        <div class="petal right"></div>
+      </div>
+    </div>
+
+    <div class="tulip yellow">
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+      <div class="flower">
+        <div class="petal left"></div>
+        <div class="petal center"></div>
+        <div class="petal right"></div>
+      </div>
+    </div>
+
+    <div class="tulip purple">
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+      <div class="flower">
+        <div class="petal left"></div>
+        <div class="petal center"></div>
+        <div class="petal right"></div>
+      </div>
+    </div>
+
+    <div class="tulip orange">
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+      <div class="flower">
+        <div class="petal left"></div>
+        <div class="petal center"></div>
+        <div class="petal right"></div>
+      </div>
+    </div>
+
+    <div class="tulip pink">
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+      <div class="flower">
+        <div class="petal left"></div>
+        <div class="petal center"></div>
+        <div class="petal right"></div>
+      </div>
+    </div>
+
+    <div class="tulip red">
+      <div class="stem"></div>
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+      <div class="flower">
+        <div class="petal left"></div>
+        <div class="petal center"></div>
+        <div class="petal right"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ground"></div>
+  <div class="hearts" id="hearts"></div>
+
+  <div class="footer-note">Made with love, just for you </div>
+
+  <script>
+    const hearts = document.getElementById("hearts");
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+      heart.style.fontSize = (16 + Math.random() * 18) + "px";
+      hearts.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
+</body>
+</html>
